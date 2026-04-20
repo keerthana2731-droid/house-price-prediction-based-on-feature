@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Price Predictor</title>
+</head>
+
+<body style="text-align:center; font-family:Arial; background:#f2f2f2;">
+
+    <h1>🏠 House Price Prediction</h1>
+
+    <form action="/predict" method="post">
+
+        <input type="number" name="area" placeholder="Area (sqft)" required><br><br>
+
+        <input type="number" name="bedroom" placeholder="Bedrooms" required><br><br>
+
+        <input type="number" name="bathroom" placeholder="Bathrooms" required><br><br>
+
+        <input type="number" step="any" name="distance" placeholder="Distance from Main Road" required><br><br>
+
+        <!-- LOCATION DROPDOWN -->
+        <select name="location" required>
+            <option value="">Select Location</option>
+            {% for loc in locations %}
+                <option value="{{ loc }}">{{ loc }}</option>
+            {% endfor %}
+        </select>
+
+        <br><br>
+
+        <button type="submit">Predict Price</button>
+
+    </form>
+
+    <h2 style="color:green;">{{ prediction_text }}</h2>
+
+</body>
+</html>
